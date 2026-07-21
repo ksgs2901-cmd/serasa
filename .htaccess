@@ -1,0 +1,14 @@
+DirectoryIndex index
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteRule ^$ index [L]
+  RewriteRule ^cpf/?$ cpf [L]
+  RewriteRule ^atendimento/?$ atendimento [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType text/html .html
+</IfModule>

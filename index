@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feirão</title>
-<script src="scripts/utms/latest-1.js" data-utmify-prevent-subids async defer></script>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
 <script>
   window.pixelId = "67f846e3e19eff9c461bb215";
   var a = document.createElement("script");
