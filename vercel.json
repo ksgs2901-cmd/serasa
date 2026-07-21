@@ -3,18 +3,10 @@
   "version": 2,
   "name": "serasa-three",
   "rewrites": [
-    { "source": "/", "destination": "/index" },
     { "source": "/cpf", "destination": "/cpf" },
     { "source": "/atendimento", "destination": "/atendimento" }
   ],
   "headers": [
-    {
-      "source": "/index",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
     {
       "source": "/cpf",
       "headers": [
@@ -24,13 +16,6 @@
     },
     {
       "source": "/atendimento",
-      "headers": [
-        { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/loading.html",
       "headers": [
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
