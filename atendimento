@@ -135,7 +135,8 @@
 
   <script>
     (function () {
-      var CHAT_URL = "https://viewer.typebot.io/home";
+      // URL do SEU Typebot (arquivo taypebot) — configure o DNS de chat.atendimentoaqui24h.lat
+      var CHAT_URL = "https://chat.atendimentoaqui24h.lat/home";
       var params = window.location.search;
 
       if (!params.includes("cpf=")) {
