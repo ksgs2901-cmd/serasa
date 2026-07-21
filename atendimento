@@ -135,7 +135,7 @@
 
   <script>
     (function () {
-      var CHAT_URL = "https://chat.atendimentoaqui24h.lat/home";
+      var CHAT_URL = "https://viewer.typebot.io/home";
       var params = window.location.search;
 
       if (!params.includes("cpf=")) {
